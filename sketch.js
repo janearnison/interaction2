@@ -6,7 +6,37 @@
 
 let watersound; 
 let shapeColor;
-let addEventListener; 
+let addEventListener;
+
+window.addEventListener("DOMContentLoaded", e =>{})
+  
+document.addEventListener("touchstart", e=> {
+    ;[...e.changedTouches].forEach(touch => {
+    const dot = document.createElement("div")
+    dot.classList.add("dot")
+    dot.style.top = `${touch.pageY}px`
+    dot.style.left = `${touch.pageX}px`
+    dot.id = touch.identifier
+    document.body.append(dot)   
+    shapeColor = color(random(255), random(255), random(255) );
+    watersound.play(); 
+    })
+  })
+
+    document.addEventListener("touchmove", e => {
+      ;[...e.changedTouches].forEach(touch => {
+      const dot = document.getElementById(touch.identifer)
+      dot.style.top = `${touch.pageY}px`
+      dot.style.left = `${touch.pageX}px`
+      }) 
+    })
+    
+  document.addEventListener("touchend", e=> {
+      ;[...e.changedTouches].forEach(touch => {
+      const dot = document.getElementById(touch.identifer)
+      dot.remove()
+      })
+    })
   
 
 
@@ -14,12 +44,13 @@ let addEventListener;
 function preload(){
 
     watersound = loadSound('water1.mp3')
-    window.addEventListener("DOMContentLoaded", e =>{})
     
 }
 function setup(){
-createCanvas(400, 400);
-shapeColor = color(245, 10, 90);
+  
+ createCanvas(400, 400);
+  
+  shapeColor = color(245, 10, 90);
   
 }
 
@@ -33,18 +64,8 @@ function draw() {
   
 }
 
-function touchstart(){
-  canvas.addEventListener("touchstart", e=> {
-    ;[...e.changedTouches].forEach(touch => {
-    const dot = canvas.createElement("div")
-    dot.classList.add("dot")
-    dot.style.top = `${touch.pageY}px`
-    dot.style.left = `${touch.pageX}px`
-    dot.id = touch.identifier
-    canvas.body.append(dot)   
-    shapeColor = color(random(255), random(255), random(255) );
-    watersound.play(); 
-    })
-  })
+function mousePressed(){
+  shapeColor = color(random(255), random(255), random(255) );
+   watersound.play();
   
 }

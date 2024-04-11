@@ -15,6 +15,7 @@ function preload(){
     watersound = loadSound('water1.mp3')
     
 }
+
 function setup(){
   
  createCanvas(400, 400);
@@ -31,7 +32,6 @@ function draw() {
   ellipse(width/2, height/2, 200,200);
   
 }
-
 
 function mousePressed(){
   shapeColor = color(random(255), random(255), random(255) );

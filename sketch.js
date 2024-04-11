@@ -9,7 +9,7 @@ let shapeColor;
 
 window.addEventListener("DOMContentLoaded", e =>{
   document.addEventListener("touchstart", e=> {
-  ;[...e.changedTouches].forEach(touch => {
+    ;[...e.changedTouches].forEach(touch => {
     const dot = document.createElement("div")
     dot.classList.add("dot")
     dot.style.top = `${touch.pageY}px`
@@ -18,23 +18,25 @@ window.addEventListener("DOMContentLoaded", e =>{
     document.body.append(dot)   
     shapeColor = color(random(255), random(255), random(255) );
     watersound.play(); 
+    })
   })
-})
-document.addEventListener("touchmove", e => {
-  ;[...e.changedTouches].forEach(touch => {
+    
+  document.addEventListener("touchmove", e => {
+    ;[...e.changedTouches].forEach(touch => {
     const dot = document.getElementById(touch.identifer)
     dot.style.top = `${touch.pageY}px`
     dot.style.left = `${touch.pageX}px`
-  }) 
-})
-
-document.addEventListener("touchend", e=> {
-;[...e.changedTouches].forEach(touch => {
-  const dot = document.getElementById(touch.identifer)
-  dot.remove()
+    }) 
+  })
+  
+  document.addEventListener("touchend", e=> {
+    ;[...e.changedTouches].forEach(touch => {
+    const dot = document.getElementById(touch.identifer)
+    dot.remove()
+    })
   })
 })
-})
+
 
 function preload(){
 

@@ -7,8 +7,24 @@ let watersound;
 let shapeColor;
 
 document.addEventListener("touchstart", e => {
+  ;[...e.changedTouches].forEach(touch => {
+    const dot = document.createElement("div")
+    dot.classList.add("dot")
+    dot.style.top = `${touch.pageY}px`
+    dot.style.left = `${touch.pageX}px`
+    dot.id = touch.identifier
+    document.body.append(dot)    
+  })
+})
+
+document.addEventListener("touchmove", e => {
   console.log(e)
 })
+
+document.addEventListener("touchend", e => {
+  console.log(e)
+})
+
 
 function preload(){
 

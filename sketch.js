@@ -50,13 +50,16 @@ document.addEventListener("touchstart", e => {
 })
 
 document.addEventListener("touchmove", e => {
-  console.log(e)
+  ;[...e.changedTouches].forEach(touch => {
+    const dot = document.getElementById(touch.identifer)
+    dot.style.top = `${touch.pageY}px`
+    dot.style.left = `${touch.pageX}px`
+  }) 
 })
 
 document.addEventListener("touchend", e => {
 ;[...e.changedTouches].forEach(touch => {
   const dot = document.getElementById(touch.identifer)
   dot.remove()
-})
-
+  })
 })

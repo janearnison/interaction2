@@ -22,7 +22,11 @@ document.addEventListener("touchmove", e => {
 })
 
 document.addEventListener("touchend", e => {
-  console.log(e)
+;[...e.changedTouches].forEach(touch => {
+  const dot = document.getElementById(touch.identifer)
+  dot.remove()
+})
+
 })
 
 

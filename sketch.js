@@ -1,3 +1,43 @@
+//Set aside computer memory to store the sound
+//load sound into memory
+// play sound when mouse is clicked in browser 
+// stop sound when mouse click ends
+
+let watersound; 
+let shapeColor;
+
+
+
+function preload(){
+
+    watersound = loadSound('water1.mp3')
+}
+
+
+function setup(){
+  
+ createCanvas(400, 400);
+  
+  shapeColor = color(245, 10, 90);
+  
+}
+
+
+function draw() {
+  background(187, 227, 247);
+  
+	noStroke();
+  fill(shapeColor);
+  ellipse(width/2, height/2, 200,200);
+  
+}
+
+function mousePressed(){
+  shapeColor = color(random(255), random(255), random(255) );
+   watersound.play();
+  
+}
+
 function startup() {
   const el = document.getElementById("canvas");
   el.addEventListener("touchstart", handleStart);
@@ -8,6 +48,8 @@ function startup() {
 }
 
 document.addEventListener("DOMContentLoaded", startup);
+
+event.preventDefault()
 
 const ongoingTouches = [];
 
@@ -83,46 +125,4 @@ function handleEnd(evt) {
       log("can't figure out which touch to end");
     }
   }
-}
-
-function handleCancel(evt) {
-  evt.preventDefault();
-  log("touchcancel.");
-  const touches = evt.changedTouches;
-
-  for (let i = 0; i < touches.length; i++) {
-    let idx = ongoingTouchIndexById(touches[i].identifier);
-    ongoingTouches.splice(idx, 1); // remove it; we're done
-  }
-}
-
-function colorForTouch(touch) {
-  let r = touch.identifier % 16;
-  let g = Math.floor(touch.identifier / 3) % 16;
-  let b = Math.floor(touch.identifier / 7) % 16;
-  r = r.toString(16); // make it a hex digit
-  g = g.toString(16); // make it a hex digit
-  b = b.toString(16); // make it a hex digit
-  const color = `#${r}${g}${b}`;
-  return color;
-}
-
-function copyTouch({ identifier, pageX, pageY }) {
-  return { identifier, pageX, pageY };
-}
-
-function ongoingTouchIndexById(idToFind) {
-  for (let i = 0; i < ongoingTouches.length; i++) {
-    const id = ongoingTouches[i].identifier;
-
-    if (id === idToFind) {
-      return i;
-    }
-  }
-  return -1; // not found
-}
-
-function log(msg) {
-  const container = document.getElementById("log");
-  container.textContent = `${msg} \n${container.textContent}`;
 }

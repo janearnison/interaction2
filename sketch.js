@@ -56,7 +56,9 @@ document.addEventListener("touchstart", e => {
     dot.style.top = `${touch.pageY}px`
     dot.style.left = `${touch.pageX}px`
     dot.id = touch.identifier
-    document.body.append(dot)    
+    document.body.append(dot)   
+    shapeColor = color(random(255), random(255), random(255) );
+    watersound.play(); 
   })
 })
 

@@ -6,6 +6,10 @@
 let watersound; 
 let shapeColor;
 
+document.addEventListener("touchstart", e => {
+  console.log(e)
+})
+
 function preload(){
 
     watersound = loadSound('water1.mp3')

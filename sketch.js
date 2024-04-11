@@ -3,17 +3,18 @@
 // play sound when mouse is clicked in browser 
 // stop sound when mouse click ends
 
+
 let watersound; 
 let shapeColor;
 
-
+window.addEventListener("load", function (e){
+})
 
 function preload(){
 
     watersound = loadSound('water1.mp3')
+    
 }
-
-
 function setup(){
   
  createCanvas(400, 400);
@@ -47,9 +48,7 @@ function startup() {
   log("Initialized.");
 }
 
-document.addEventListener("DOMContentLoaded", startup);
-
-document.addEventListener("touchstart", e => {
+document.addEventListener("touchstart", e=> {
   ;[...e.changedTouches].forEach(touch => {
     const dot = document.createElement("div")
     dot.classList.add("dot")
@@ -70,7 +69,7 @@ document.addEventListener("touchmove", e => {
   }) 
 })
 
-document.addEventListener("touchend", e => {
+document.addEventListener("touchend", e=> {
 ;[...e.changedTouches].forEach(touch => {
   const dot = document.getElementById(touch.identifer)
   dot.remove()

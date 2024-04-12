@@ -1,3 +1,5 @@
+
+
 function setup() {
   // set canvas to window size
   createCanvas(windowWidth, windowHeight);
@@ -5,7 +7,7 @@ function setup() {
 
 
 function draw() {
-  background(180,17,24);
+  background(180,17,240);
 
   fill('magenta');
 
@@ -24,3 +26,26 @@ function mousePressed() {
 document.addEventListener('gesturestart', function(e) {
   e.preventDefault();
 });
+
+
+var coordX = 0;
+var coordY = 0;
+
+window.onmousemove = coordHandler;
+window.ontouchstart = coordHandler;
+window.ontouchmove = coordHandler;
+
+function coordHandler(event) {
+    switch (event.type) {
+        case 'mousemove':
+            coordX = event.clientX;
+            coordY = event.clientY;
+            break;
+        case 'touchstart':
+        case 'touchmove':
+            var firstTouch = event.touches[0];
+            coordX = firstTouch.clientX;
+            coordY = firstTouch.clientY;
+            break;
+    }
+}

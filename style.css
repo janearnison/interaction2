@@ -1,8 +1,19 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  touch-action: none;
+ 
 }
-canvas {
+.canvas {
   display: block;
+  background-color: aqua;
+  display: flex; 
+  align-items: flex-end;
+
+}
+
+.dot {
+  position: absolute; 
+  background-color: red;
+  transform: translate(-50%, -50%);
 }
